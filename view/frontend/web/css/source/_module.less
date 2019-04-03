@@ -4,6 +4,7 @@
         .totals {
             &.minimumorderfee {
                 color: #da0000;
+                //noinspection LessResolvedByNameOnly
                 .label {
                     .lib-icon-font(
                         @icon-warning,
@@ -20,6 +21,15 @@
                     font-size: 70%;
                     color: #da0000;
                 }
+            }
+        }
+    }
+    .block-minicart {
+        .minimum-order-fee-message {
+            margin: 0 @indent__s @indent__s;
+            background: @color-gray-darken0;
+            > div {
+                padding: @indent__s;
             }
         }
     }
