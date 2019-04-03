@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var $block \Netzexpert\MinimumOrderFee\Block\Adminhtml\Sales\Order\Creditmemo\Totals\MinimumOrderFee
+ */
+?>
+<tr>
+    <td class="label"><?php /* @escapeNotVerified */ echo $block->getFeeLabel() ?><div id="minimum_order_fee_adv"></div></td>
+    <td>
+
+        <span>
+            <span class="price"><?php echo $block->formatPrice($block->getFeeAmount())?></span>
+        </span>
+        <!-- Todo add posibility to change refunded fee value -->
+
+        <?php
+/*        if ($block->getSource()->getId()){
+        */?><!--
+            <span>
+                <span class="price"><?php /*echo $block->formatPrice($block->getFeeAmount())*/?></span>
+            </span>
+        <?php
+/*        } else{ */?>
+            <input type="text"
+               name="creditmemo[payment_method_fee]"
+               value="<?php /*/* @escapeNotVerified */ //echo $block->getFeeAmount()*/?>"
+               class="input-text admin__control-text not-negative-amount"
+               id="payment_method_fee" />
+        --><?php /*} */?>
+    </td>
+</tr>

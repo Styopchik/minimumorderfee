@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    .opc-block-summary,
+    .cart-totals {
+        .totals {
+            &.minimumorderfee {
+                color: #da0000;
+                .label {
+                    .lib-icon-font(
+                        @icon-warning,
+                        @_icon-font-display: inline,
+                        @_icon-font-margin: 0px,
+                        @_icon-font-size: 20px
+                    );
+                    &:before {
+                        display: inline;
+                    }
+                }
+                .value {
+                    display: block;
+                    font-size: 70%;
+                    color: #da0000;
+                }
+            }
+        }
+    }
+}
