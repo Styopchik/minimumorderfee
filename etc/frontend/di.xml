@@ -11,4 +11,8 @@
         <plugin name="minimum_order_fee_message"
                 type="Netzexpert\MinimumOrderFee\Plugin\Checkout\CustomerData\CartPlugin" />
     </type>
+    <type name="Magento\CheckoutAgreements\Api\CheckoutAgreementsListInterface">
+        <plugin name="feeFilterAgreements"
+                type="Netzexpert\MinimumOrderFee\Plugin\CheckoutAgreementsListPlugin" />
+    </type>
 </config>
