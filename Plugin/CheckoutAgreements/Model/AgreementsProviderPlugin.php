@@ -7,7 +7,6 @@
 
 namespace Netzexpert\MinimumOrderFee\Plugin\CheckoutAgreements\Model;
 
-
 class AgreementsProviderPlugin
 {
 
@@ -25,7 +24,7 @@ class AgreementsProviderPlugin
     public function __construct(
         \Magento\Checkout\Model\Session $session,
         \Magento\CheckoutAgreements\Api\CheckoutAgreementsRepositoryInterface $checkoutAgreementsRepository
-    ){
+    ) {
         $this->checkoutSession = $session;
         $this->chekoutAgreementsRepository = $checkoutAgreementsRepository;
     }
@@ -34,17 +33,18 @@ class AgreementsProviderPlugin
     /**
      * @param \Magento\CheckoutAgreements\Model\AgreementsProvider $agreementsProvider
      * @param int[] $agreementIds
+     * @return int[]
      */
     public function afterGetRequiredAgreementIds(
         \Magento\CheckoutAgreements\Model\AgreementsProvider $agreementsProvider,
         $agreementIds
     ) {
         $fee = $this->getMinimumOrderFeeValue();
-        if(!$fee){
-            foreach ($agreementIds as $key => $agreementId){
+        if (!$fee) {
+            foreach ($agreementIds as $key => $agreementId) {
                 $agreement = $this->chekoutAgreementsRepository->get($agreementId);
                 if ($agreement->getName() == 'Minimum Order Fee') {
-                    unset ($agreementIds[$key]);
+                    unset($agreementIds[$key]);
                 }
             }
         }
@@ -54,9 +54,10 @@ class AgreementsProviderPlugin
     /**
      * @return bool
      */
-    protected function getMinimumOrderFeeValue(){
+    protected function getMinimumOrderFeeValue()
+    {
         $totals = $this->checkoutSession->getQuote()->getTotals();
-        if(!isset($totals['minimumorderfee'])){
+        if (!isset($totals['minimumorderfee'])) {
             return false;
         }
         /** @var \Magento\Quote\Model\Quote\Address\Total $minimumOrderFee */
